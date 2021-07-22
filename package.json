@@ -19,7 +19,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-share": "^4.4.0",
-    "react-typed": "^1.2.0"
+    "react-typed": "^1.2.0",
+"tsparticles":"^1.12.11"
   },
   "scripts": {
     "start": "react-scripts start",
