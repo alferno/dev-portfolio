@@ -81,41 +81,53 @@ const Contact = () => {
   const [message, setMessage] = useState('')
   const [show, setShow] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleClick = (e) => {
     e.preventDefault()
-
-    let templateParams = {
-      from_name: email,
-      to_name: 'aniandp@gmail.com',
-      subject: name,
-      message_html: message,
-    }
-    try {
-      emailjs.send(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        templateParams,
-        process.env.REACT_APP_USER_ID
+    if (email && name && message) {
+      var pattern = new RegExp(
+        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
       )
-      setShow(true)
-      setName('')
-      setEmail('')
-      setMessage('')
-      const timeId = setTimeout(() => {
-        // After 3 seconds set the show value to false
-        setShow(false)
-        setSuccess(true)
-      }, 3000)
-      const successId = setTimeout(() => {
-        setSuccess(false)
-      }, 5000)
-      return () => {
-        clearTimeout(timeId)
-        clearTimeout(successId)
+
+      if (pattern.test(email)) {
+        let templateParams = {
+          from_name: email,
+          to_name: 'aniandp@gmail.com',
+          subject: name,
+          message_html: message,
+        }
+        try {
+          emailjs.send(
+            process.env.REACT_APP_SERVICE_ID,
+            process.env.REACT_APP_TEMPLATE_ID,
+            templateParams,
+            process.env.REACT_APP_USER_ID
+          )
+          setShow(true)
+          setName('')
+          setEmail('')
+          setMessage('')
+          const timeId = setTimeout(() => {
+            // After 3 seconds set the show value to false
+            setShow(false)
+            setSuccess(true)
+          }, 3000)
+          const successId = setTimeout(() => {
+            setSuccess(false)
+          }, 5000)
+          return () => {
+            clearTimeout(timeId)
+            clearTimeout(successId)
+          }
+        } catch (err) {
+          throw new Error(err)
+        }
+      } else {
+        setError(true)
       }
-    } catch (err) {
-      throw new Error(err)
+    } else {
+      setError(true)
     }
   }
   const classes = useStyles()
@@ -167,6 +179,9 @@ const Contact = () => {
           </Button>
           {show ? <p className={classes.popup}>Sending...</p> : null}
           {success ? <p className={classes.popup}>Sent!</p> : null}
+          {error ? (
+            <p className={classes.popup}>Enter all/correct the details</p>
+          ) : null}
         </Box>
       </Grid>
     </Box>
