@@ -44,8 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   timeLineItem: {
     padding: '1rem',
-    alignItems: 'center',
-    border: '2px solid tan',
+    borderBottom: '2px solid tan',
     position: 'relative',
     margin: '1rem 3rem 1rem 1rem',
     clear: 'both',
@@ -104,7 +103,12 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     color: 'tomato',
-    padding: '1rem 0',
+    padding: '3rem 0',
+    textTransform: 'uppercase',
+  },
+  subHeading: {
+    color: '#fff',
+    padding: 0,
     textTransform: 'uppercase',
   },
   body1: {
@@ -138,7 +142,7 @@ const Resume = () => {
               Responsive Web Designing
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar1}
               alt='responsive web design certification'
             />
@@ -153,7 +157,7 @@ const Resume = () => {
               javascript algorithms and data structures
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar2}
               alt='javascript algorithms and data structures certification'
             />
@@ -168,7 +172,7 @@ const Resume = () => {
               front end libraries
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar3}
               alt='front end libraries certification'
             />
@@ -183,7 +187,7 @@ const Resume = () => {
               data visualization
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar4}
               alt='data visualization certification'
             />
@@ -198,7 +202,7 @@ const Resume = () => {
               apis and microservices
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar5}
               alt='apis and microservices certification'
             />
@@ -213,7 +217,7 @@ const Resume = () => {
               Quality Assurance
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar6}
               alt='Quality Assurance certification'
             />
@@ -228,7 +232,7 @@ const Resume = () => {
               information security and quality assurance
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar7}
               alt=' information security and quality assurance certification'
             />
@@ -243,7 +247,7 @@ const Resume = () => {
               Legacy Full Stack
             </Typography>
             <img
-              style={{ height: '300px', width: '520px' }}
+              style={{ height: '100%', width: '100%' }}
               src={avatar8}
               alt='Legacy Full Stack certification'
             />
