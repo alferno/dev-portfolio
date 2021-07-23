@@ -7,6 +7,11 @@ import Typed from 'react-typed'
 import { makeStyles } from '@material-ui/core/styles'
 import photo from '../images/avatar.jpg'
 
+import Contact from './Contact'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import { Button } from '@material-ui/core'
+
 const data = ['Hi, I design and build user interfaces']
 
 const useStyles = makeStyles((theme) => ({
@@ -35,9 +40,26 @@ const useStyles = makeStyles((theme) => ({
     color: 'tomato',
     paddingTop: '10px',
   },
+  modal: {
+    position: 'relative',
+    color: 'tomato',
+    textAlign: 'center',
+    marginTop: '10rem',
+  },
+  modalOpen: {},
 }))
 
 const Header = () => {
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   const classes = useStyles()
 
   return (
@@ -64,6 +86,35 @@ const Header = () => {
       <Typography className={classes.summary} variant='h4'>
         <Typed startDelay={2000} strings={data} typeSpeed={40} />
       </Typography>
+      <div className={classes.modal}>
+        <p style={{ fontSize: '20px', textDecoration: 'bold' }}>
+          Get in touch for any queries
+        </p>
+        <Button
+          variant='outlined'
+          style={{ backgroundColor: '#4CAF50', color: 'white' }}
+          onClick={handleClickOpen}
+        >
+          Contact Me
+        </Button>
+      </div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        fullWidth={true}
+        className={classes.modalOpen}
+      >
+        <DialogActions style={{ backgroundColor: 'tomato', color: 'tomato' }}>
+          <Button
+            onClick={handleClose}
+            style={{ display: 'flex', justifyContent: 'flex-end' }}
+            color='white'
+          >
+            &times;
+          </Button>
+        </DialogActions>
+        <Contact />
+      </Dialog>
     </Box>
   )
 }
