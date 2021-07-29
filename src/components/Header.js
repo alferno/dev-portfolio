@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box'
 import Typed from 'react-typed'
 import { makeStyles } from '@material-ui/core/styles'
 import photo from '../images/avatar.jpg'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import Contact from './Contact'
 import Dialog from '@material-ui/core/Dialog'
@@ -64,6 +65,9 @@ const Header = () => {
     setOpen(false)
   }
 
+  const isTabletOrMobile = useMediaQuery('(max-width: 500px)')
+  const isTabletOrMobile1 = useMediaQuery('(max-height:550px)')
+
   const classes = useStyles()
 
   return (
@@ -87,9 +91,11 @@ const Header = () => {
           loop
         />
       </Typography>
-      <Typography className={classes.summary} variant='h4'>
-        <Typed startDelay={2000} strings={data} typeSpeed={40} />
-      </Typography>
+      {isTabletOrMobile ? null : isTabletOrMobile1 ? null : (
+        <Typography className={classes.summary} variant='h4'>
+          <Typed startDelay={2000} strings={data} typeSpeed={40} />
+        </Typography>
+      )}
       <Box className={classes.modal}>
         <p style={{ fontSize: '20px', textDecoration: 'bold' }}>
           Get in touch for any queries
