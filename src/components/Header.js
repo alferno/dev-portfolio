@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     color: 'tomato',
     textAlign: 'center',
-    marginTop: '10rem',
+    marginTop: '5rem',
   },
   modalOpen: {},
 }))
