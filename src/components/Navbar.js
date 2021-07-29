@@ -108,6 +108,14 @@ const Navbar = () => {
       <Box component='nav'>
         <AppBar position='fixed' className={classes.appbar}>
           <Toolbar>
+            <Typography variant='h5'>
+              <a
+                href='http://localhost:3000/'
+                style={{ textDecoration: 'none', color: 'tan' }}
+              >
+                Switch
+              </a>
+            </Typography>
             <Typography variant='h5' className={classes.title}>
               <a href='/' style={{ textDecoration: 'none', color: 'tan' }}>
                 Portfolio
