@@ -9,7 +9,6 @@ import photo from '../images/avatar.jpg'
 
 import Contact from './Contact'
 import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
 import { Button } from '@material-ui/core'
 
 const data = ['Hi, I design and build user interfaces']
@@ -46,7 +45,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     marginTop: '5rem',
   },
-  modalOpen: {},
+  modalOpen: {
+    backgroundColor: 'black',
+    color: 'tomato',
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
 }))
 
 const Header = () => {
@@ -86,7 +90,7 @@ const Header = () => {
       <Typography className={classes.summary} variant='h4'>
         <Typed startDelay={2000} strings={data} typeSpeed={40} />
       </Typography>
-      <div className={classes.modal}>
+      <Box className={classes.modal}>
         <p style={{ fontSize: '20px', textDecoration: 'bold' }}>
           Get in touch for any queries
         </p>
@@ -97,22 +101,19 @@ const Header = () => {
         >
           Contact Me
         </Button>
-      </div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        fullWidth={true}
-        className={classes.modalOpen}
-      >
-        <DialogActions style={{ backgroundColor: 'tomato', color: 'tomato' }}>
+      </Box>
+      <Dialog open={open} onClose={handleClose} fullWidth={true}>
+        <Box className={classes.modalOpen}>
           <Button
             onClick={handleClose}
-            style={{ display: 'flex', justifyContent: 'flex-end' }}
-            color='white'
+            style={{
+              textDecoration: 'bold',
+              color: 'tomato',
+            }}
           >
-            &times;
+            Close
           </Button>
-        </DialogActions>
+        </Box>
         <Contact />
       </Dialog>
     </Box>
