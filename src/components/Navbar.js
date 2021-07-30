@@ -110,7 +110,7 @@ const Navbar = () => {
           <Toolbar>
             <Typography variant='h5'>
               <a
-                href='http://localhost:3000/'
+                href='https://krishankyadav1.vercel.app/'
                 style={{ textDecoration: 'none', color: 'tan' }}
               >
                 Switch
