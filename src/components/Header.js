@@ -87,7 +87,7 @@ const Header = () => {
             'RESTful and GRAPHQL Apis',
           ]}
           typeSpeed={40}
-          backSpeed={50}
+          backSpeed={30}
           loop
         />
       </Typography>
